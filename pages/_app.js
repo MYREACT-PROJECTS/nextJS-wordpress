@@ -1,7 +1,24 @@
-import '../styles/globals.css'
+//import '../src/styles/globals.css'
+//import  '../src/styles/index.css'
+//import "tailwindcss/tailwind.css";
+import '../src/styles/style.scss'
+
+import { ApolloProvider } from '@apollo/client';
+import client from '../src/apollo/client'
+import Router from "next/router";
+import NProgress from "nprogress";
+
+NProgress.configure({ showSpinner: false });
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return( 
+ <ApolloProvider client={client}>
+     <Component {...pageProps} />
+ </ApolloProvider>
+ )
 }
 
 export default MyApp

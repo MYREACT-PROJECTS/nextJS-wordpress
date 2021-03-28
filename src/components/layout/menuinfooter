@@ -1,0 +1,18 @@
+{ ! isEmpty(footerMenus) && isArray(footerMenus) ? (
+     <ul>
+       {footerMenus?.map(footerMenu =>(
+         <li key={footerMenu?.node?.id}>
+           <Link href={footerMenu?.node?.path}>
+           <a className="text-white">
+            {footerMenu?.node?.label}
+           </a>
+           </Link>
+
+         </li>
+       ))}
+     </ul>
+
+
+   ):null
+        
+   }
